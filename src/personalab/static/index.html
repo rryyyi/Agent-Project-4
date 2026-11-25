@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PersonaLab — 可复现的人格驱动 Agent 行为实验平台">
+  <title>PersonaLab · Agent Behavior Studio</title>
+  <link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="brand-mark">P<span>·</span></span> PersonaLab</a>
+    <div class="workspace">RESEARCH WORKSPACE <span>v0.1</span></div>
+    <nav aria-label="主导航"><a class="nav-item active" href="#studio"><span>◈</span> Experiment studio</a><a class="nav-item" href="#personas"><span>◉</span> Persona registry</a><a class="nav-item" href="#history"><span>↗</span> Run history</a><a class="nav-item" href="/docs" target="_blank" rel="noopener"><span>⌘</span> API reference</a></nav>
+    <div class="side-note"><span class="status-dot"></span> Local research environment<p>Transparent parameters.<br>Traceable decisions.<br>Reproducible experiments.</p></div>
+    <a class="repo-link" href="https://github.com/rryyyi/Agent-Project-4" target="_blank" rel="noopener">View source on GitHub ↗</a>
+  </aside>
+  <main id="studio">
+    <header class="topbar"><span>Workspace <span class="slash">/</span> <strong>Behavioral simulation</strong></span><span class="connection"><span class="status-dot"></span> <span id="connection-text">Connecting</span></span></header>
+    <section class="page-heading"><div><div class="eyebrow">PERSONA-DRIVEN AGENT EXPERIMENTS</div><h1>From parameters<br>to <span>observable behavior.</span></h1><p>构建角色，控制变量，观察每一次决策。<br class="mobile-break">让 Agent 行为实验可复现、可解释、可检查。</p></div><div class="heading-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="core">P</div><span class="sat sat-a"></span><span class="sat sat-b"></span><span class="sat sat-c"></span><div class="art-label">PERSONA → ACTION → EVIDENCE</div></div></section>
+    <div class="notice"><span>◌</span><p><strong>Synthetic agents, transparent assumptions.</strong> 离线模式使用种子启发式策略；模拟结果不代表真实用户行为。真实模型实验请配置 LLM Provider。</p><span class="tag">RESEARCH PREVIEW</span></div>
+    <div class="studio-grid">
+      <section class="panel config-panel"><div class="panel-heading"><div><span class="step">01</span><h2>Configure experiment</h2></div><span class="muted">设置实验</span></div>
+        <form id="run-form">
+          <label for="scenario">Environment <span>实验环境</span></label><select id="scenario"><option value="public_goods">公共物品博弈 · Public Goods</option><option value="trust_game">信任博弈 · Trust Game</option><option value="product_ab">产品策略对比 · Product A/B</option></select><p id="scenario-description" class="field-help">同时贡献，观察个体利益与共同收益的权衡。</p>
+          <label for="provider">Decision provider <span>决策来源</span></label><select id="provider"><option value="offline">Offline · 可复现演示</option><option value="openai">LLM · OpenAI-compatible</option></select>
+          <div id="model-field" hidden><label for="model">Model ID</label><input id="model" value="gpt-4o-mini" maxlength="120"></div>
+          <div class="two-col"><div><label for="rounds">Rounds <span>回合</span></label><input id="rounds" type="number" value="5" min="1" max="100" required></div><div><label for="repetitions">Repetitions <span>重复</span></label><input id="repetitions" type="number" value="3" min="1" max="50" required></div></div>
+          <label for="seed">Random seed <span>匹配种子</span></label><input id="seed" type="number" value="42" min="0" max="4294967295" required>
+          <div id="variants" hidden><label for="variant-a">Offer A</label><textarea id="variant-a" rows="2" maxlength="1000">Standard plan: clear price, basic benefits.</textarea><label for="variant-b">Offer B</label><textarea id="variant-b" rows="2" maxlength="1000">Same price, transparent privacy controls and a free trial.</textarea></div>
+          <label>Agent cohort <span>选择角色</span></label><div id="persona-options" class="persona-options"></div>
+          <details class="advanced"><summary>Advanced controls · 调用边界</summary><div class="two-col"><div><label for="max-calls">Max calls</label><input id="max-calls" type="number" value="1000" min="1" max="10000"></div><div><label for="retries">Retries</label><input id="retries" type="number" value="2" min="0" max="3"></div></div></details>
+          <button id="run-button" class="primary" type="submit"><span>Run experiment</span><span>↗</span></button><p class="run-hint" id="run-hint">预计 60 次决策 · Offline 无需 API 密钥</p>
+        </form>
+      </section>
+      <section class="results-column"><div class="panel results-panel"><div class="panel-heading"><div><span class="step">02</span><h2>Observe & evaluate</h2></div><span id="run-status" class="badge">READY</span></div>
+        <div id="error" class="error" role="alert" hidden></div><div id="empty-state" class="empty-state"><div class="empty-chart" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><h3>Your next experiment starts here.</h3><p>选择场景与角色，运行一次行为模拟。<br>查看行为差异、运行指标与完整决策轨迹。</p><button id="sample-button" class="secondary" type="button">Try a product A/B experiment ↗</button></div>
+        <div id="result-content" hidden><div class="run-meta"><span id="run-id"></span><span id="provider-label" class="tag"></span></div><div class="metric-grid"><div><span>Completed decisions</span><strong id="metric-decisions">—</strong><small>已结算决策</small></div><div><span>Legal decision rate</span><strong id="metric-valid">—</strong><small>完成 / 计划</small></div><div><span>Provider calls</span><strong id="metric-calls">—</strong><small>包含重试</small></div><div><span>Elapsed</span><strong id="metric-elapsed">—</strong><small>端到端用时</small></div></div><div class="chart-heading"><h3 id="chart-title">Mean action by persona</h3><span class="muted" id="chart-unit">贡献数量 / 10</span></div><div id="chart" class="bar-chart" aria-label="按人格分组的动作均值"></div><div id="ab-summary" class="ab-summary" hidden></div><div class="export-row"><span id="usage-label"></span><div><button id="json-download" class="secondary" type="button">↓ JSON</button><a id="report-download" class="secondary">↓ Report.md</a></div></div></div>
+      </div><div class="method-strip"><span>⌁</span><div><strong>Every decision has a trail.</strong><p>人格快照 → 上下文 → 合法动作校验 → 环境收益 → 自动评测</p></div><span class="mono">TRACEABLE BY DESIGN</span></div></section>
+    </div>
+    <section id="trace-section" class="panel trace-panel" hidden><div class="panel-heading"><div><span class="step">03</span><h2>Decision trace</h2></div><span class="muted">前 100 条 · 完整数据请导出 JSON</span></div><div class="table-scroll"><table><thead><tr><th>Persona</th><th>Rep / Round</th><th>Variant · Role</th><th>Action</th><th>Payoff</th><th>Explanation</th></tr></thead><tbody id="trace-body"></tbody></table></div></section>
+    <section id="personas" class="registry-section"><div class="section-title"><div><div class="eyebrow">STRUCTURED PERSONA REGISTRY</div><h2>Different parameters. Different decisions.</h2></div><span class="muted">4 synthetic personas · JSON schema v1.0</span></div><div id="persona-cards" class="persona-cards"></div></section>
+    <section id="history" class="panel history-panel"><div class="panel-heading"><div><span class="step">↗</span><h2>Recent experiments</h2></div><button id="refresh-history" type="button" class="text-button">Refresh ↻</button></div><div id="history-list" class="history-list">No runs yet.</div></section>
+    <footer><span>PersonaLab / Agent Behavior Studio</span><span>Reproducibility is a feature. Evidence is the standard.</span></footer>
+  </main>
+</body>
+</html>
