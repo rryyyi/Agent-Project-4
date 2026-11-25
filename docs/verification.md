@@ -17,7 +17,7 @@ Date: 2026-11-25. All numbers below describe actual checks of this repository, n
 | Browser flow | 120-decision A/B run, first 100 trace rows, JSON download, no page errors |
 | Untrusted explanation | HTML-like explanation displayed as literal text, no injected image element |
 | Mobile | No horizontal document overflow at 390px |
-| Packaging | sdist + wheel built; packaged persona JSON and all three static assets verified |
+| Packaging | sdist + wheel built; isolated wheel installation loaded personas/static assets and completed an offline HTTP experiment |
 | Python coverage | 83% in-process statement coverage; CLI tests execute real subprocesses, which are not counted in this coverage measurement |
 
 Exact command suite:
@@ -46,8 +46,8 @@ The author performed a separate whole-project review using the approved design, 
 ## External verification boundaries
 
 - No paid or real-provider LLM experiment was run. The OpenAI-compatible adapter was tested at the real HTTP contract boundary using httpx MockTransport, including usage and failure classification.
-- Local Docker client exists, but Docker Desktop's Linux engine was not running. No local container-build success is claimed. The GitHub Actions container job builds, starts and exercises an offline experiment on Linux; consult the actual run status.
-- Local Python checks ran on 3.14. GitHub Actions checks 3.11–3.14 on Linux and 3.12 on Windows; support across those environments is judged from CI outcomes.
+- Local Docker client exists, but Docker Desktop's Linux engine was not running. No local container-build success is claimed. GitHub Actions successfully built the container, started it, verified health and completed an offline API experiment on Linux.
+- GitHub Actions run [45541460247](https://github.com/rryyyi/Agent-Project-4/actions/runs/45541460247) completed successfully for commit `4492f02`: Python 3.11, 3.12, 3.13 and 3.14 on Linux; Python 3.12 on Windows; and Container smoke. Each Python job passed lint, format, tests, offline reproduction and package build. Subsequent maintenance commits are tracked by the current CI badge.
 - No human behavioral calibration, large-scale load test, production deployment or durable crash recovery validation is included.
 
 Current CI status and logs: https://github.com/rryyyi/Agent-Project-4/actions/workflows/ci.yml
