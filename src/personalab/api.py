@@ -34,7 +34,7 @@ def create_app(db_path: str | Path | None = None) -> FastAPI:
         version=__version__,
         description="Persona-driven synthetic behavioral experiments. Local single-user deployment.",
     )
-    registry = load_personas()
+    registry = load_personas(os.getenv("PERSONALAB_PERSONAS"))
     store = Store(db_path or os.getenv("PERSONALAB_DB", "artifacts/personalab.db"))
     static = Path(str(files("personalab").joinpath("static")))
     app.mount("/static", StaticFiles(directory=static), name="static")

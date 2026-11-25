@@ -8,6 +8,21 @@ from personalab.scenarios import context_for, settle, validate_action
 from personalab.schemas import Decision, ExperimentConfig, Persona
 
 
+def test_custom_registry_is_loadable_and_rejects_duplicate_ids(tmp_path):
+    import json
+
+    persona = load_personas()["cooperator"].model_dump()
+    path = tmp_path / "personas.json"
+    path.write_text(json.dumps([persona]), encoding="utf-8")
+    assert list(load_personas(path)) == ["cooperator"]
+    path.write_text(json.dumps([persona, persona]), encoding="utf-8")
+    with pytest.raises(ValueError, match="duplicate"):
+        load_personas(path)
+    path.write_text("[]", encoding="utf-8")
+    with pytest.raises(ValueError, match="empty"):
+        load_personas(path)
+
+
 def test_registry_has_distinct_valid_personas():
     registry = load_personas()
     assert len(registry) == 4

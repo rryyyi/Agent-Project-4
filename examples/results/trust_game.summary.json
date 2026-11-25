@@ -1,0 +1,1090 @@
+{
+  "config": {
+    "scenario": "trust_game",
+    "personas": [
+      "cooperator",
+      "reciprocator",
+      "cautious",
+      "explorer"
+    ],
+    "provider": "offline",
+    "model": "gpt-4o-mini",
+    "rounds": 3,
+    "repetitions": 2,
+    "seed": 42,
+    "concurrency": 4,
+    "max_calls": 1000,
+    "max_retries": 2,
+    "timeout_seconds": 30.0,
+    "history_window": 2,
+    "variant_a": "Standard plan: clear price, basic benefits.",
+    "variant_b": "Same price, transparent privacy controls and a free trial."
+  },
+  "persona_snapshot": {
+    "cooperator": {
+      "schema_version": "1.0",
+      "id": "cooperator",
+      "name": "合作型 · Cooperator",
+      "description": "教学用合成人格，重视共同收益。参数为工程建模假设，未经心理测量校准。",
+      "traits": {
+        "openness": 0.65,
+        "conscientiousness": 0.8,
+        "extraversion": 0.7,
+        "agreeableness": 0.9,
+        "neuroticism": 0.2
+      },
+      "social": {
+        "cooperation": 0.9,
+        "reciprocity": 0.65,
+        "fairness": 0.85
+      },
+      "preferences": {
+        "risk_tolerance": 0.55,
+        "loss_aversion": 0.3
+      },
+      "evidence": []
+    },
+    "reciprocator": {
+      "schema_version": "1.0",
+      "id": "reciprocator",
+      "name": "互惠型 · Reciprocator",
+      "description": "教学用合成人格，倾向根据可观察的合作历史调整行为。参数并非论文估计值。",
+      "traits": {
+        "openness": 0.5,
+        "conscientiousness": 0.75,
+        "extraversion": 0.5,
+        "agreeableness": 0.7,
+        "neuroticism": 0.35
+      },
+      "social": {
+        "cooperation": 0.65,
+        "reciprocity": 0.95,
+        "fairness": 0.9
+      },
+      "preferences": {
+        "risk_tolerance": 0.45,
+        "loss_aversion": 0.5
+      },
+      "evidence": []
+    },
+    "cautious": {
+      "schema_version": "1.0",
+      "id": "cautious",
+      "name": "审慎型 · Cautious",
+      "description": "教学用合成人格，对不确定性与潜在损失较敏感。参数为可修改的演示假设。",
+      "traits": {
+        "openness": 0.25,
+        "conscientiousness": 0.9,
+        "extraversion": 0.3,
+        "agreeableness": 0.55,
+        "neuroticism": 0.7
+      },
+      "social": {
+        "cooperation": 0.45,
+        "reciprocity": 0.6,
+        "fairness": 0.65
+      },
+      "preferences": {
+        "risk_tolerance": 0.15,
+        "loss_aversion": 0.9
+      },
+      "evidence": []
+    },
+    "explorer": {
+      "schema_version": "1.0",
+      "id": "explorer",
+      "name": "探索型 · Explorer",
+      "description": "教学用合成人格，偏好尝试新方案与承担风险。参数没有真实用户代表性保证。",
+      "traits": {
+        "openness": 0.95,
+        "conscientiousness": 0.45,
+        "extraversion": 0.8,
+        "agreeableness": 0.45,
+        "neuroticism": 0.2
+      },
+      "social": {
+        "cooperation": 0.35,
+        "reciprocity": 0.35,
+        "fairness": 0.45
+      },
+      "preferences": {
+        "risk_tolerance": 0.9,
+        "loss_aversion": 0.15
+      },
+      "evidence": []
+    }
+  },
+  "status": "completed",
+  "error": null,
+  "calls_used": 48,
+  "metrics": {
+    "planned_decisions": 48,
+    "completed_decisions": 48,
+    "legal_decision_rate": 1.0,
+    "valid_attempt_rate": 1.0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "action_distribution": {
+      "0.294": 1,
+      "0.295": 1,
+      "0.301": 1,
+      "0.342": 1,
+      "0.346": 1,
+      "0.362": 1,
+      "0.44": 1,
+      "0.453": 1,
+      "0.457": 1,
+      "0.47": 1,
+      "0.479": 1,
+      "0.512": 1,
+      "0.515": 1,
+      "0.538": 1,
+      "0.539": 1,
+      "0.553": 1,
+      "0.57": 1,
+      "0.573": 1,
+      "0.601": 1,
+      "0.608": 1,
+      "0.62": 1,
+      "0.642": 1,
+      "0.693": 1,
+      "0.71": 1,
+      "0.725": 1,
+      "0.77": 1,
+      "0.84": 1,
+      "1.04": 1,
+      "1.37": 1,
+      "1.83": 1,
+      "3.33": 1,
+      "3.36": 1,
+      "3.73": 1,
+      "3.91": 1,
+      "4.35": 1,
+      "4.43": 1,
+      "4.44": 1,
+      "4.46": 1,
+      "4.47": 1,
+      "4.73": 1,
+      "4.95": 1,
+      "5.32": 1,
+      "5.59": 1,
+      "5.84": 1,
+      "5.86": 1,
+      "6.74": 1,
+      "6.77": 1,
+      "6.86": 1
+    },
+    "by_persona": {
+      "cautious": {
+        "decisions": 12,
+        "mean_action": 0.755917,
+        "mean_payoff": 7.893978
+      },
+      "cooperator": {
+        "decisions": 12,
+        "mean_action": 3.39225,
+        "mean_payoff": 11.584219
+      },
+      "explorer": {
+        "decisions": 12,
+        "mean_action": 2.545,
+        "mean_payoff": 7.592772
+      },
+      "reciprocator": {
+        "decisions": 12,
+        "mean_action": 2.275833,
+        "mean_payoff": 8.800698
+      }
+    }
+  },
+  "decisions": [
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 48033883,
+      "cooperation_parameter": 0.9,
+      "action": 5.84,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 16.862,
+      "pair_id": "0:1:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 2409203722,
+      "cooperation_parameter": 0.65,
+      "action": 0.725,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 4.818,
+      "pair_id": "0:1:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 691615801,
+      "cooperation_parameter": 0.65,
+      "action": 4.35,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 12.37075,
+      "pair_id": "0:1:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3284620273,
+      "cooperation_parameter": 0.45,
+      "action": 0.515,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 6.32925,
+      "pair_id": "0:1:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3029169980,
+      "cooperation_parameter": 0.45,
+      "action": 1.37,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 9.86711,
+      "pair_id": "0:1:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 2410254204,
+      "cooperation_parameter": 0.35,
+      "action": 0.301,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 2.87289,
+      "pair_id": "0:1:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3164351843,
+      "cooperation_parameter": 0.35,
+      "action": 5.59,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 12.99624,
+      "pair_id": "0:1:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3749438194,
+      "cooperation_parameter": 0.9,
+      "action": 0.512,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 8.18376,
+      "pair_id": "0:1:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3709865346,
+      "cooperation_parameter": 0.9,
+      "action": 5.32,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 14.5752,
+      "pair_id": "0:2:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 2908991105,
+      "cooperation_parameter": 0.65,
+      "action": 0.62,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 6.0648,
+      "pair_id": "0:2:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3823507180,
+      "cooperation_parameter": 0.65,
+      "action": 3.73,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 11.38383,
+      "pair_id": "0:2:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3895522617,
+      "cooperation_parameter": 0.45,
+      "action": 0.457,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 6.07617,
+      "pair_id": "0:2:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 2590871270,
+      "cooperation_parameter": 0.45,
+      "action": 0.57,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 10.04902,
+      "pair_id": "0:2:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 985210427,
+      "cooperation_parameter": 0.35,
+      "action": 0.362,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 1.09098,
+      "pair_id": "0:2:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 2300425091,
+      "cooperation_parameter": 0.35,
+      "action": 4.44,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 11.8204,
+      "pair_id": "0:2:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 4066803451,
+      "cooperation_parameter": 0.9,
+      "action": 0.47,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 7.0596,
+      "pair_id": "0:2:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3916515453,
+      "cooperation_parameter": 0.9,
+      "action": 6.77,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 18.8687,
+      "pair_id": "0:3:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 2223606289,
+      "cooperation_parameter": 0.65,
+      "action": 0.77,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 4.6713,
+      "pair_id": "0:3:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 1462016171,
+      "cooperation_parameter": 0.65,
+      "action": 3.91,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 11.40369,
+      "pair_id": "0:3:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 2993429925,
+      "cooperation_parameter": 0.45,
+      "action": 0.453,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 6.41631,
+      "pair_id": "0:3:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 285059844,
+      "cooperation_parameter": 0.45,
+      "action": 0.84,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 9.90088,
+      "pair_id": "0:3:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 563452485,
+      "cooperation_parameter": 0.35,
+      "action": 0.294,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 1.77912,
+      "pair_id": "0:3:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 844383880,
+      "cooperation_parameter": 0.35,
+      "action": 4.46,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 13.67504,
+      "pair_id": "0:3:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 334102444,
+      "cooperation_parameter": 0.9,
+      "action": 0.608,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 5.24496,
+      "pair_id": "0:3:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3428183747,
+      "cooperation_parameter": 0.9,
+      "action": 5.86,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 16.32294,
+      "pair_id": "1:1:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 889807875,
+      "cooperation_parameter": 0.65,
+      "action": 0.693,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 5.39706,
+      "pair_id": "1:1:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 512252564,
+      "cooperation_parameter": 0.65,
+      "action": 3.36,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 11.46832,
+      "pair_id": "1:1:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 55152617,
+      "cooperation_parameter": 0.45,
+      "action": 0.479,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 5.25168,
+      "pair_id": "1:1:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 1555421279,
+      "cooperation_parameter": 0.45,
+      "action": 1.04,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 10.03952,
+      "pair_id": "1:1:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3296836181,
+      "cooperation_parameter": 0.35,
+      "action": 0.346,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 2.04048,
+      "pair_id": "1:1:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "investor",
+      "seed": 2521088506,
+      "cooperation_parameter": 0.35,
+      "action": 4.43,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 12.91937,
+      "pair_id": "1:1:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3051899382,
+      "cooperation_parameter": 0.9,
+      "action": 0.553,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 5.94063,
+      "pair_id": "1:1:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 2098894494,
+      "cooperation_parameter": 0.9,
+      "action": 6.86,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 16.35236,
+      "pair_id": "1:2:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 4018714303,
+      "cooperation_parameter": 0.65,
+      "action": 0.642,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 7.36764,
+      "pair_id": "1:2:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3265392613,
+      "cooperation_parameter": 0.65,
+      "action": 4.47,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 12.74458,
+      "pair_id": "1:2:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 2285290027,
+      "cooperation_parameter": 0.45,
+      "action": 0.538,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 6.19542,
+      "pair_id": "1:2:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 697177054,
+      "cooperation_parameter": 0.45,
+      "action": 1.83,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 10.04758,
+      "pair_id": "1:2:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 1303795714,
+      "cooperation_parameter": 0.35,
+      "action": 0.342,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 3.61242,
+      "pair_id": "1:2:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "investor",
+      "seed": 1921533677,
+      "cooperation_parameter": 0.35,
+      "action": 4.73,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 13.40087,
+      "pair_id": "1:2:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3380116053,
+      "cooperation_parameter": 0.9,
+      "action": 0.573,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 6.05913,
+      "pair_id": "1:2:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 1127731914,
+      "cooperation_parameter": 0.9,
+      "action": 6.74,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 17.6162,
+      "pair_id": "1:3:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 1680035572,
+      "cooperation_parameter": 0.65,
+      "action": 0.71,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 5.8638,
+      "pair_id": "1:3:cooperator"
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 3409867199,
+      "cooperation_parameter": 0.65,
+      "action": 3.33,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 12.05461,
+      "pair_id": "1:3:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3208316397,
+      "cooperation_parameter": 0.45,
+      "action": 0.539,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 4.60539,
+      "pair_id": "1:3:reciprocator"
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 2488904322,
+      "cooperation_parameter": 0.45,
+      "action": 0.44,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 9.9494,
+      "pair_id": "1:3:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 2346767484,
+      "cooperation_parameter": 0.35,
+      "action": 0.295,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 0.9306,
+      "pair_id": "1:3:cautious"
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "investor",
+      "seed": 834210395,
+      "cooperation_parameter": 0.35,
+      "action": 4.95,
+      "explanation": "Offline synthetic policy: seeded action from social.cooperation, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.cooperation",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 13.97485,
+      "pair_id": "1:3:explorer"
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "trustee",
+      "seed": 3012277829,
+      "cooperation_parameter": 0.9,
+      "action": 0.601,
+      "explanation": "Offline synthetic policy: seeded action from social.reciprocity, social.fairness.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "social.reciprocity",
+        "social.fairness"
+      ],
+      "payoff": 5.92515,
+      "pair_id": "1:3:explorer"
+    }
+  ]
+}

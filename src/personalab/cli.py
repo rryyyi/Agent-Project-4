@@ -19,7 +19,7 @@ from .storage import Store
 
 
 async def execute(config: ExperimentConfig) -> dict:
-    registry = load_personas()
+    registry = load_personas(os.getenv("PERSONALAB_PERSONAS"))
     if config.provider == "offline":
         return await run_experiment(config, registry, OfflineProvider())
     key = os.getenv("OPENAI_API_KEY")

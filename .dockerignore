@@ -1,0 +1,9 @@
+.git
+.venv
+.env*
+artifacts
+.superpowers
+__pycache__
+.pytest_cache
+dist
+node_modules

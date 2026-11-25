@@ -149,6 +149,24 @@ def test_unknown_parameter_reference_is_invalid_output():
     assert result["attempts"][0]["status"] == "invalid_output"
 
 
+def test_partial_ab_units_are_excluded_from_comparison():
+    result = run(
+        ExperimentConfig(scenario="product_ab", personas=["cooperator"], rounds=3, repetitions=1, max_calls=4)
+    )
+    assert result["status"] == "failed"
+    assert result["metrics"]["ab_comparison"]["paired_units"] == 0
+    assert result["metrics"]["ab_comparison"]["difference_b_minus_a"] is None
+
+
+def test_partial_round_retains_validated_output_in_attempt_trace():
+    result = run(ExperimentConfig(rounds=1, repetitions=1, max_calls=2))
+    assert result["status"] == "failed"
+    assert len(result["decisions"]) == 0
+    successful = [a for a in result["attempts"] if a["status"] == "ok"]
+    assert len(successful) == 2
+    assert all("action" in a["validated_decision"] for a in successful)
+
+
 def test_call_budget_is_hard_cap_even_with_concurrency():
     result = run(ExperimentConfig(rounds=3, repetitions=1, max_calls=2))
     assert result["status"] == "failed"

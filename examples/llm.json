@@ -1,0 +1,13 @@
+{
+  "scenario": "public_goods",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "personas": ["cooperator", "cautious"],
+  "rounds": 2,
+  "repetitions": 1,
+  "seed": 42,
+  "concurrency": 2,
+  "max_calls": 8,
+  "max_retries": 1,
+  "timeout_seconds": 30
+}

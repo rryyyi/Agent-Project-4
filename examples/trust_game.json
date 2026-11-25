@@ -1,0 +1,8 @@
+{
+  "scenario": "trust_game",
+  "provider": "offline",
+  "rounds": 3,
+  "repetitions": 2,
+  "seed": 42,
+  "history_window": 2
+}

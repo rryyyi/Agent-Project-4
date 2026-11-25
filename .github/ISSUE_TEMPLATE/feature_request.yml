@@ -1,0 +1,25 @@
+name: Feature proposal
+description: Suggest an improvement with a concrete use case
+title: '[Feature] '
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and use case
+      description: What experiment or workflow cannot be completed today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and alternatives
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How would we verify it?
+      description: Include example inputs, expected outputs and interpretation limits.
+    validations:
+      required: true

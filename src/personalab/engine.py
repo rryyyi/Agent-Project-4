@@ -100,6 +100,7 @@ async def run_experiment(config: ExperimentConfig, registry: dict[str, Persona],
                     if not set(decision.parameter_refs).issubset(allowed_refs):
                         raise ValueError("unknown parameter reference")
                     trace["status"] = "ok"
+                    trace["validated_decision"] = decision.model_dump(mode="json")
                 except TimeoutError:
                     trace["status"] = "timeout"
                 except ProviderError as exc:

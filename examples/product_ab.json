@@ -1,0 +1,9 @@
+{
+  "scenario": "product_ab",
+  "provider": "offline",
+  "rounds": 5,
+  "repetitions": 3,
+  "seed": 42,
+  "variant_a": "Standard plan: clear price, basic benefits.",
+  "variant_b": "Same price, transparent privacy controls and a free trial."
+}

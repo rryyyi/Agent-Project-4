@@ -1,0 +1,5 @@
+PersonaLab teaching note — original synthetic material, not a published paper.
+Cooperation preferences can be represented as explicit parameters in a synthetic policy.
+Reciprocity can condition the next decision on the preceding round's observed actions.
+Risk tolerance is an engineering modeling assumption here and requires external validation before human prediction.
+合作参数用于教学模拟，不构成对真实人格的心理学诊断。

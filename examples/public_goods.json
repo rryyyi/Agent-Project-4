@@ -1,0 +1,11 @@
+{
+  "scenario": "public_goods",
+  "provider": "offline",
+  "personas": ["cooperator", "reciprocator", "cautious", "explorer"],
+  "rounds": 5,
+  "repetitions": 3,
+  "seed": 42,
+  "max_calls": 1000,
+  "max_retries": 2,
+  "history_window": 4
+}

@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python: ['3.11', '3.12', '3.13', '3.14']
+        include:
+          - os: windows-latest
+            python: '3.12'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m ruff check src tests scripts
+      - run: python -m ruff format --check src tests scripts
+      - run: python -m pytest -q --cov=personalab --cov-report=term-missing --cov-report=xml
+      - run: python scripts/reproduce.py
+      - run: python -m build
+      - uses: actions/upload-artifact@v4
+        if: matrix.python == '3.12' && matrix.os == 'ubuntu-latest'
+        with:
+          name: python-distributions
+          path: dist/*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-${{ matrix.os }}-${{ matrix.python }}
+          path: coverage.xml
+
+  container:
+    name: Container smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t personalab:ci .
+      - name: Start and verify health
+        shell: bash
+        run: |
+          docker run -d --name personalab-ci -p 127.0.0.1:8000:8000 personalab:ci
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8000/api/health; then
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs personalab-ci
+          exit 1
+      - name: Verify offline experiment
+        run: |
+          curl --fail --silent -X POST http://127.0.0.1:8000/api/runs -H 'Content-Type: application/json' -d '{"rounds":1,"repetitions":1}' > /tmp/run.json
+          python -c "import json; r=json.load(open('/tmp/run.json')); assert r['status']=='completed'; assert r['metrics']['completed_decisions']==4"
+      - name: Container diagnostics and cleanup
+        if: always()
+        run: |
+          docker logs personalab-ci || true
+          docker rm -f personalab-ci || true

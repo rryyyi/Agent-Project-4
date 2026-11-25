@@ -1,0 +1,2328 @@
+{
+  "config": {
+    "scenario": "product_ab",
+    "personas": [
+      "cooperator",
+      "reciprocator",
+      "cautious",
+      "explorer"
+    ],
+    "provider": "offline",
+    "model": "gpt-4o-mini",
+    "rounds": 5,
+    "repetitions": 3,
+    "seed": 42,
+    "concurrency": 4,
+    "max_calls": 1000,
+    "max_retries": 2,
+    "timeout_seconds": 30.0,
+    "history_window": 4,
+    "variant_a": "Standard plan: clear price, basic benefits.",
+    "variant_b": "Same price, transparent privacy controls and a free trial."
+  },
+  "persona_snapshot": {
+    "cooperator": {
+      "schema_version": "1.0",
+      "id": "cooperator",
+      "name": "合作型 · Cooperator",
+      "description": "教学用合成人格，重视共同收益。参数为工程建模假设，未经心理测量校准。",
+      "traits": {
+        "openness": 0.65,
+        "conscientiousness": 0.8,
+        "extraversion": 0.7,
+        "agreeableness": 0.9,
+        "neuroticism": 0.2
+      },
+      "social": {
+        "cooperation": 0.9,
+        "reciprocity": 0.65,
+        "fairness": 0.85
+      },
+      "preferences": {
+        "risk_tolerance": 0.55,
+        "loss_aversion": 0.3
+      },
+      "evidence": []
+    },
+    "reciprocator": {
+      "schema_version": "1.0",
+      "id": "reciprocator",
+      "name": "互惠型 · Reciprocator",
+      "description": "教学用合成人格，倾向根据可观察的合作历史调整行为。参数并非论文估计值。",
+      "traits": {
+        "openness": 0.5,
+        "conscientiousness": 0.75,
+        "extraversion": 0.5,
+        "agreeableness": 0.7,
+        "neuroticism": 0.35
+      },
+      "social": {
+        "cooperation": 0.65,
+        "reciprocity": 0.95,
+        "fairness": 0.9
+      },
+      "preferences": {
+        "risk_tolerance": 0.45,
+        "loss_aversion": 0.5
+      },
+      "evidence": []
+    },
+    "cautious": {
+      "schema_version": "1.0",
+      "id": "cautious",
+      "name": "审慎型 · Cautious",
+      "description": "教学用合成人格，对不确定性与潜在损失较敏感。参数为可修改的演示假设。",
+      "traits": {
+        "openness": 0.25,
+        "conscientiousness": 0.9,
+        "extraversion": 0.3,
+        "agreeableness": 0.55,
+        "neuroticism": 0.7
+      },
+      "social": {
+        "cooperation": 0.45,
+        "reciprocity": 0.6,
+        "fairness": 0.65
+      },
+      "preferences": {
+        "risk_tolerance": 0.15,
+        "loss_aversion": 0.9
+      },
+      "evidence": []
+    },
+    "explorer": {
+      "schema_version": "1.0",
+      "id": "explorer",
+      "name": "探索型 · Explorer",
+      "description": "教学用合成人格，偏好尝试新方案与承担风险。参数没有真实用户代表性保证。",
+      "traits": {
+        "openness": 0.95,
+        "conscientiousness": 0.45,
+        "extraversion": 0.8,
+        "agreeableness": 0.45,
+        "neuroticism": 0.2
+      },
+      "social": {
+        "cooperation": 0.35,
+        "reciprocity": 0.35,
+        "fairness": 0.45
+      },
+      "preferences": {
+        "risk_tolerance": 0.9,
+        "loss_aversion": 0.15
+      },
+      "evidence": []
+    }
+  },
+  "status": "completed",
+  "error": null,
+  "calls_used": 120,
+  "metrics": {
+    "planned_decisions": 120,
+    "completed_decisions": 120,
+    "legal_decision_rate": 1.0,
+    "valid_attempt_rate": 1.0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "action_distribution": {
+      "0.0": 60,
+      "1.0": 60
+    },
+    "by_persona": {
+      "cautious": {
+        "decisions": 30,
+        "mean_action": 0.366667,
+        "mean_payoff": 0.366667
+      },
+      "cooperator": {
+        "decisions": 30,
+        "mean_action": 0.533333,
+        "mean_payoff": 0.533333
+      },
+      "explorer": {
+        "decisions": 30,
+        "mean_action": 0.733333,
+        "mean_payoff": 0.733333
+      },
+      "reciprocator": {
+        "decisions": 30,
+        "mean_action": 0.366667,
+        "mean_payoff": 0.366667
+      }
+    },
+    "ab_comparison": {
+      "paired_units": 12,
+      "unit": "persona_id × repetition; rounds averaged within unit",
+      "rate_a": 0.466667,
+      "rate_b": 0.533333,
+      "difference_b_minus_a": 0.066667,
+      "ci95_normal_approx": [
+        -0.007039,
+        0.140373
+      ],
+      "caveat": "Descriptive normal approximation over synthetic paired units; small samples and interacting agents violate population inference assumptions. Not a real-user causal effect."
+    }
+  },
+  "decisions": [
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 1850371394,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 1265593708,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 3412995830,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 3131436000,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 4097796903,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 580529875,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 3692814756,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 2230845008,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 752682593,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 477377993,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 3847156888,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 1654923523,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 593654617,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 1202166695,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 1614972647,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 2161958669,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 978284769,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 127525811,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 1713449264,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 2952139470,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 1850371394,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 1265593708,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 3412995830,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 3131436000,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 4097796903,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 580529875,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 3692814756,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 2230845008,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 752682593,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 477377993,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 3847156888,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 1654923523,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 593654617,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 1202166695,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 1614972647,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 2161958669,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 0,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 978284769,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 0,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 127525811,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 0,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 1713449264,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 0,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 2952139470,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 1153793825,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 1493478573,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 1439472497,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 857304004,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 3644766889,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 702755867,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 2947185071,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 1661882717,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 375192659,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 2340299075,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 2044666928,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 2443832003,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 642903758,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 408957896,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 3120436467,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 449417838,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 1555255819,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 671904381,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 842011362,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 3878797306,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 1153793825,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 1493478573,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 1439472497,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 857304004,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 3644766889,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 702755867,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 2947185071,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 1661882717,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 375192659,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 2340299075,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 2044666928,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 2443832003,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 642903758,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 408957896,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 3120436467,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 449417838,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 1,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 1555255819,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 1,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 671904381,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 1,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 842011362,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 1,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 3878797306,
+      "cooperation_parameter": 0.35,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 2670564345,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 4142574350,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 3627350020,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 1,
+      "variant": "A",
+      "role": "player",
+      "seed": 51722924,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 926487095,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 93737908,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 708201312,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 2,
+      "variant": "A",
+      "role": "player",
+      "seed": 243627521,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 293101060,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 36695659,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 2649081376,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 3,
+      "variant": "A",
+      "role": "player",
+      "seed": 888242717,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 631513398,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 349882693,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 1277661381,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 4,
+      "variant": "A",
+      "role": "player",
+      "seed": 137585662,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 4058134093,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 1232812776,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 3991185804,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 5,
+      "variant": "A",
+      "role": "player",
+      "seed": 4264499031,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 2670564345,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 4142574350,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 3627350020,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 1,
+      "variant": "B",
+      "role": "player",
+      "seed": 51722924,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 926487095,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 93737908,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 708201312,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 2,
+      "variant": "B",
+      "role": "player",
+      "seed": 243627521,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 293101060,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 36695659,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 2649081376,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 3,
+      "variant": "B",
+      "role": "player",
+      "seed": 888242717,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 631513398,
+      "cooperation_parameter": 0.9,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 349882693,
+      "cooperation_parameter": 0.65,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 1277661381,
+      "cooperation_parameter": 0.45,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 4,
+      "variant": "B",
+      "role": "player",
+      "seed": 137585662,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "cooperator",
+      "repetition": 2,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 4058134093,
+      "cooperation_parameter": 0.9,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    },
+    {
+      "persona_id": "reciprocator",
+      "repetition": 2,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 1232812776,
+      "cooperation_parameter": 0.65,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "cautious",
+      "repetition": 2,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 3991185804,
+      "cooperation_parameter": 0.45,
+      "action": 0.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 0.0
+    },
+    {
+      "persona_id": "explorer",
+      "repetition": 2,
+      "round": 5,
+      "variant": "B",
+      "role": "player",
+      "seed": 4264499031,
+      "cooperation_parameter": 0.35,
+      "action": 1.0,
+      "explanation": "Offline synthetic policy: seeded action from traits.openness, preferences.risk_tolerance, preferences.loss_aversion.",
+      "confidence": 0.7,
+      "parameter_refs": [
+        "traits.openness",
+        "preferences.risk_tolerance",
+        "preferences.loss_aversion"
+      ],
+      "payoff": 1.0
+    }
+  ]
+}
