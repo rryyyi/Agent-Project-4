@@ -27,8 +27,8 @@ jobs:
           - os: windows-latest
             python: '3.12'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python }}
           cache: pip
@@ -38,12 +38,12 @@ jobs:
       - run: python -m pytest -q --cov=personalab --cov-report=term-missing --cov-report=xml
       - run: python scripts/reproduce.py
       - run: python -m build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: matrix.python == '3.12' && matrix.os == 'ubuntu-latest'
         with:
           name: python-distributions
           path: dist/*
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: coverage-${{ matrix.os }}-${{ matrix.python }}
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: docker build -t personalab:ci .
       - name: Start and verify health
         shell: bash
