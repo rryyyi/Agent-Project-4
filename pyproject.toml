@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "personalab-agent"
+version = "0.1.0"
+description = "Reproducible persona-driven LLM agent behavioral experiments"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "rryyyi"}]
+dependencies = ["fastapi>=0.115,<1", "pydantic>=2.10,<3", "httpx>=0.28,<1", "uvicorn>=0.34,<1", "pypdf>=5,<7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "build>=1.2,<2"]
+
+[project.scripts]
+personalab = "personalab.cli:main"
+
+[project.urls]
+Repository = "https://github.com/rryyyi/Agent-Project-4"
+Issues = "https://github.com/rryyyi/Agent-Project-4/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/personalab"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+ignore = ["E501"]
